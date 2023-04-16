@@ -1,10 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 const Budget = () => {
-    const { budget } = useContext(AppContext);
+    const { budget } = useState('');
+    const {dispatch, expenses} = useContext(AppContext);
+    const submitEvent = (Budget) => {
+        if(Budget.length === 0){return;}
+        if(parseInt(Budget) > 20000){
+            alert("The budget cannot exceed 20000");
+            return;
+        }
+        const totalExpenses = expenses.reduce((total, item) => {
+            return (total += item.cost);
+        }, 0);
+        if(totalExpenses > parseInt(Budget))
+        {
+            alert("You cannot reduce the budget value lower than the spending.");
+            return;
+        }
+            dispatch({
+                type: 'SET_BUDGET',
+                payload: Budget
+            });
+};
+
     return (
         <div className='alert alert-secondary'>
-            <span>Budget: £{budget}</span>
+            <span>Budget:£ 
+            <input type="number" 
+            required = 'required'
+            id="budget" 
+            value = {budget}
+            style={{ marginLeft: '2rem' , size: 10}}
+            step={10}
+            max={20000}
+            onChange={(event) => {submitEvent(event.target.value)}}>
+
+            </input>
+            </span>
         </div>
     );
 };
