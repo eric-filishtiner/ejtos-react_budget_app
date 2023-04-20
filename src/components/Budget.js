@@ -3,6 +3,7 @@ import { AppContext } from '../context/AppContext';
 const Budget = () => {
     const { budget } = useState('');
     const {dispatch, expenses} = useContext(AppContext);
+    const {currency} = useContext(AppContext);
     const submitEvent = (Budget) => {
         if(Budget.length === 0){return;}
         if(parseInt(Budget) > 20000){
@@ -25,12 +26,12 @@ const Budget = () => {
 
     return (
         <div className='alert alert-secondary'>
-            <span>Budget:£ 
+            <span>Budget:{currency}
             <input type="number" 
             required = 'required'
             id="budget" 
             value = {budget}
-            style={{ marginLeft: '2rem' , size: 10}}
+            style={{ marginRight: '2rem' , size: 10, width: '132px'}}
             step={10}
             max={20000}
             onChange={(event) => {submitEvent(event.target.value)}}>

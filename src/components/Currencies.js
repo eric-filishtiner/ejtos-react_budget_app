@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState , useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 const Currencies = () => {
-    const { currency } = useState('');
-    const {chosenCurrency, setChosenCurrency} = useState('Currency($ Dollar)')
+    const { dispatch, currency } = useContext(AppContext);
 const set_currency = (object) => {
     //console.log(object.target);
     //console.log(object.target.value);
+    console.log(currency);
+    const current_currency = object.target.value.charAt(0);
     object.target.value = "Currency(" + object.target.value + ")";
+    dispatch({
+        type: 'CHG_CURRENCY',
+        payload: current_currency
+    });
 }
     return (
         <div className='alert alert-secondary' id = 'outer-div'>
