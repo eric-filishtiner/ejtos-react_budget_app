@@ -1,0 +1,15 @@
+select {
+    color: white;
+}
+
+select option {
+    color: black;
+}
+
+span select {
+    width: 100%;
+}
+
+div span {
+    width: 100%;
+}
