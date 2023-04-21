@@ -15,9 +15,9 @@ const set_currency = (object) => {
     });
 }
     return (
-        <div className='alert alert-secondary' id = 'outer-div' style={{backgroundColor: 'lightgreen', width: '190px'}}>
+        <div className='alert alert-secondary' id = 'outer-div' style={{backgroundColor: 'lightgreen', width: '235px', height: '50px'}}>
             <span style={{ backgroundColor: 'lightgreen'}} id="currency-span">
-                <select style={{ backgroundColor: 'lightgreen', border: 'none', outline: 'none' }} id="currencies" defaultValue="Currency(£ Pound)" onChange={(event) => set_currency(event)} >
+                <select style={{ backgroundColor: 'lightgreen', border: 'none', outline: 'none', fontSize: '23px' }} id="currencies" defaultValue="Currency(£ Pound)" onChange={(event) => set_currency(event)} >
                     <option value="$ Dollar" label="$ Dollar"></option>
                     <option value="£ Pound" label="£ Pound"></option>
                     <option value="€ Euro" label="€ Euro"></option>
